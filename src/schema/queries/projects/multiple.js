@@ -1,9 +1,8 @@
 import request from 'request';
 import { GraphQLList, GraphQLInt, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
 
-// var utils = require('../../../services/utils');
 import { default as utils } from '../../../services/utils';
-const ProjectType = require('../../types/project');
+import ProjectType from '../../types/project';
 
 module.exports = {
   type: new GraphQLList(ProjectType),

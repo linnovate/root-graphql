@@ -1,11 +1,7 @@
-var request = require('request');
+import request from 'request';
+import { GraphQLID, GraphQLNonNull } from 'graphql';
 
-var GraphQLList = require('graphql').GraphQLList;
-var GraphQLInt = require('graphql').GraphQLInt;
-var GraphQLID = require('graphql').GraphQLID;
-var GraphQLNonNull = require('graphql').GraphQLNonNull;
-
-var ProjectType = require('../../types/project');
+import ProjectType from '../../types/project';
 import { default as utils } from '../../../services/utils';
 
 module.exports = {

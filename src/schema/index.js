@@ -1,5 +1,4 @@
-var GraphQLObjectType = require('graphql').GraphQLObjectType;
-var GraphQLSchema = require('graphql').GraphQLSchema;
+import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
 var queries = require('./queries');
 

@@ -1,7 +1,5 @@
-var GraphQLObjectType = require('graphql').GraphQLObjectType;
-var GraphQLNonNull = require('graphql').GraphQLNonNull;
-var GraphQLString = require('graphql').GraphQLString;
-var GraphQLID = require('graphql').GraphQLID;
+import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
+
 
 module.exports = new GraphQLObjectType({
   name: 'Project',
