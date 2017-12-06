@@ -2,7 +2,8 @@ version: '3'
 
 services:
   root-graphql:
-    build: .
+    build:
+      context: .
     image: root-graphql
     # image: localhost:5000/root-graphql
     ports:
