@@ -1,0 +1,7 @@
+{
+  "root": {
+    "port": "ROOT_PORT",
+    "host": "ROOT_HOST"
+  },
+  "port": "PORT"
+}

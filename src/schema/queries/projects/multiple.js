@@ -30,6 +30,7 @@ module.exports = {
       args.limit = args.limit || 0;
       args.sort = args.sort || 'created';
       request(utils.apiBaseUrl + '/projects?' + utils.toQueryString(args), function (error, response, body) {
+        console.log('ROOT RESPONSE ERROR:', error);
         if (error) return resolve([]);
         body = JSON.parse(body);
         return resolve(body.content);

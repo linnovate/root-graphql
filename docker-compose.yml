@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  root-graphql:
+    build: .
+    image: root-graphql
+    # image: localhost:5000/root-graphql
+    ports:
+      - "1111:1111"
+    env_file: .env
+    restart: always

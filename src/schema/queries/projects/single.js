@@ -19,6 +19,7 @@ module.exports = {
   resolve: (root, args, req) => {
     return new Promise(function (resolve, reject) {
       request(utils.apiBaseUrl + '/projects/' + args.id + '?' + utils.toQueryString(args), function (error, response, body) {
+        console.log('ROOT RESPONSE ERROR:', error);
         if (error) return resolve({});
         body = JSON.parse(body);
         return resolve(body);
