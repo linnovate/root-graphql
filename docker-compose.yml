@@ -7,6 +7,6 @@ services:
     image: root-graphql
     # image: localhost:5000/root-graphql
     ports:
-      - "1111:1111"
+      - "3007:3007"
     env_file: .env
     restart: always

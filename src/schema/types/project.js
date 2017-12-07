@@ -15,6 +15,9 @@ module.exports = new GraphQLObjectType({
     },
     title: {
       type: new GraphQLNonNull(GraphQLString)
+    },
+    description: {
+      type: GraphQLString
     }
   })
 });
