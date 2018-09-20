@@ -1,7 +1,7 @@
 {
   "root": {
     "port": "3002",
-    "host": "http://localhost"
+    "host": "http://localhost:3000"
   },
   "port": "3007"
 }

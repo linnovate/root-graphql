@@ -1,6 +1,6 @@
 {
   "name": "root-graphql",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Orit Persik <orit@linnovate.net>",
   "description": "a simple graphql web server to linnovate/root project",
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "config": "^1.28.1",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-graphql": "^0.6.11",
     "graphql": "^0.11.7",
