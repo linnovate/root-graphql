@@ -36,7 +36,13 @@ module.exports = {
         console.log('ROOT RESPONSE ERROR:', error);
         if (error) return resolve([]);
         let data = JSON.parse(body);
-        data = data.filter((q) => Math.round((new Date(q.custom.data.booking_from) - new Date())/(1000 * 60 * 60 *24)) === args.daysBefore);
+        console.log('data before filtering: ', require('util').inspect(data.map(b => b.description), {maxArrayLength: null}));
+        let date = new Date();
+        date.setDate(date.getDate() + args.daysBefore);
+        data = data.filter((q) => {
+          return date.toDateString() === new Date(q.custom.data.booking_from).toDateString();
+        });
+        console.log('data after filtering: ', require('util').inspect(data, {showHidden: false, depth: null}));
         return resolve(data);
       });
     });

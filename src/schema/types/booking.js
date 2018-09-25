@@ -15,6 +15,10 @@ const GuestType = new GraphQLObjectType({
     lastName: {
       type: GraphQLString,
       resolve: root => root.last_name && root.last_name[0]
+    },
+    firstName: {
+      type: GraphQLString,
+      resolve: root => root.first_name && root.first_name[0]
     }
   })
 })
@@ -29,6 +33,10 @@ module.exports = new GraphQLObjectType({
     masterID: {
       type: GraphQLID,
       resolve: root => root.custom.data.booking_no
+    },
+    roomType: {
+      type: GraphQLString,
+      resolve: root => root.custom.data.room_type
     },
     guest: {
       type: GuestType,
