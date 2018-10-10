@@ -8,5 +8,6 @@ export default {
   apiBaseUrl: `${rootCnf.host}:${rootCnf.port}/api`,
   toQueryString: obj => {
     return _.map(obj, (v, k) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join('&');
-  }
+  },
+  mutateTags: require('./mutate-tags')
 };

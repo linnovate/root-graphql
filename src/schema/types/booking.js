@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
+import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLList } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 
 const GuestType = new GraphQLObjectType({
