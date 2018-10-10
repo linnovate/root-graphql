@@ -1,5 +1,7 @@
 const beforeArrival = require('./beforeArrival');
+const afterStay = require('./afterStay');
 
 module.exports = {
-    bookingBeforeArrival: beforeArrival
+    bookingBeforeArrival: beforeArrival,
+    bookingAfterStay: afterStay
 };

@@ -32,18 +32,13 @@ module.exports = {
       args.start = args.start || 0;
       args.limit = args.limit || 0;
       args.sort = args.sort || 'created';
-      console.log(`${utils.apiBaseUrl}/customData?uid=${args.uid}&type=reservation`);
       request(`${utils.apiBaseUrl}/customData?uid=${args.uid}&type=reservation`, (error, response, body) => {
         console.log('ROOT RESPONSE ERROR:', error);
         if (error) return resolve([]);
         let data = JSON.parse(body);
-        console.log('data before filtering: ', require('util').inspect(data.map(b => b.description), {maxArrayLength: null}));
-        let date = new Date();
-        date.setDate(date.getDate() + args.daysBefore);
-        data = data.filter((q) => {
-          return date.toDateString() === new Date(q.custom.data.booking_from).toDateString();
-        });
-        console.log('data after filtering: ', require('util').inspect(data, {showHidden: false, depth: null}));
+        console.log(data);
+        data = data.filter(res => res.tags.includes('LAS'));
+        console.log(data);
         return resolve(data);
       });
     });
