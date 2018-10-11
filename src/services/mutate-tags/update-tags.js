@@ -9,9 +9,7 @@ module.exports = function (data) {
     if(idx !== -1)  data.data.tags.splice(idx, 1);
   }
 
-  return new Promise((resolve, reject) => {
-    console.log('updatetag');
-    
+  return new Promise((resolve, reject) => {    
     var options = {
       method: 'PUT',
       url: data.config.url + '/tasks/' + data.data._id,

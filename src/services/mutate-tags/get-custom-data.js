@@ -2,10 +2,6 @@ var request = require('request');
 
 module.exports = function (data) {
   return new Promise((resolve, reject) => {
-    console.log('getcustomdata');
-    console.log('data', data);
-
-
     var options = {
       method: 'GET',
       url: data.config.url + '/customData/' + data.bookingNo,
@@ -19,7 +15,6 @@ module.exports = function (data) {
 
     request(options, function (error, response, body) {
       if (error) return reject(new Error(error));
-      
       try {
         body = JSON.parse(body);
       }

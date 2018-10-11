@@ -2,9 +2,6 @@ var request = require('request');
 
 module.exports = function (data) {
   return new Promise((resolve, reject) => {
-    console.log('gettoken');
-    console.log(data.config);
-    
     var options = {
       method: 'POST',
       url: data.config.url + '/login',
