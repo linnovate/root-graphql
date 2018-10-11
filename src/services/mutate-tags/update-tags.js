@@ -1,15 +1,17 @@
 var request = require('request');
 
 module.exports = function (data) {
-
-  if(data.op === 'add' )
-    data.data.tags.push(data.tag);
-  else if(data.op === 'remove'){
-    const idx = data.data.tags.indexOf(data.tag);
-    if(idx !== -1)  data.data.tags.splice(idx, 1);
-  }
-
   return new Promise((resolve, reject) => {    
+
+    const idx = data.data.tags.indexOf(data.tag);
+    if(data.op === 'add')
+      if(idx === -1)  data.data.tags.push(data.tag);
+      else return reject(new Error(`The tag ${data.tag} already exists in reservation ${data.bookingNo}.`));
+    else if(data.op === 'remove')
+      if(idx !== -1)  data.data.tags.splice(idx, 1);
+      else return reject(new Error(`The tag ${data.tag} does not exist in reservation ${data.bookingNo}.`));
+    else return reject(new Error('Wrong op'));
+
     var options = {
       method: 'PUT',
       url: data.config.url + '/tasks/' + data.data._id,

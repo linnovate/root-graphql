@@ -41,11 +41,12 @@ module.exports = {
       args.start = args.start || 0;
       args.limit = args.limit || 0;
       args.sort = args.sort || 'created';
-      console.log('addtag');
       
+      console.log(`******* Adding ${args.tag} tag to reservation ${args.bookingNo}... *******`);
+
       return utils.mutateTags({
         tag: args.tag,
-        op: 'remove',
+        op: 'add',
         bookingNo: args.bookingNo,
         config: {
           email: args.email,
@@ -54,8 +55,10 @@ module.exports = {
           url: utils.apiBaseUrl
         }
       })
-      .then(data => { console.log('final: ', data);
-        return resolve(data)})
+      .then(data => {
+        console.log(`******* Tag ${args.tag} added. *******`);
+        return resolve(data);
+      })
       .catch(err => reject(err));
     });
   }

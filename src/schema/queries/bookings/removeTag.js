@@ -41,7 +41,8 @@ module.exports = {
       args.start = args.start || 0;
       args.limit = args.limit || 0;
       args.sort = args.sort || 'created';
-      console.log('addtag');
+   
+      console.log(`******* Removing ${args.tag} tag from reservation ${args.bookingNo}... *******`);
       
       return utils.mutateTags({
         tag: args.tag,
@@ -54,8 +55,10 @@ module.exports = {
           url: utils.apiBaseUrl
         }
       })
-      .then(data => { console.log('final: ', data);
-        return resolve(data)})
+      .then(data => {
+        console.log(`******* Tag ${args.tag} removed. *******`);
+        return resolve(data);
+      })
       .catch(err => reject(err));
     });
   }
