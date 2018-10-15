@@ -7,7 +7,7 @@ module.exports = function (data) {
     getCustomData(data)
       .then(data => {
         if (!condition(data.tag, data.op, data.data.custom.data.state))
-          return resolve(data.data);
+          return reject(new Error('condition failed'));
         return getToken(data)
       })
       .then(data => updateTags(data))

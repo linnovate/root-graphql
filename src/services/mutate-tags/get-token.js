@@ -2,6 +2,7 @@ var request = require('request');
 
 module.exports = function (data) {
   return new Promise((resolve, reject) => {
+    console.log('Getting root token...');
     var options = {
       method: 'POST',
       url: data.config.url + '/login',

@@ -2,6 +2,7 @@ var request = require('request');
 
 module.exports = function (data) {
   return new Promise((resolve, reject) => {
+    console.log('Getting custom data...');
     var options = {
       method: 'GET',
       url: data.config.url + '/customData/' + data.bookingNo,
@@ -21,7 +22,7 @@ module.exports = function (data) {
       catch (err) {
         return reject(new Error(err));
       }
-      if (body.status > 300) return reject(new Error(body.message));
+      if (body.status > 300 || body._id == null) return reject(new Error(body.message));
 
       delete body.__v;
       body.visible = false;

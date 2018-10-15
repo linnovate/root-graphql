@@ -2,7 +2,7 @@ var request = require('request');
 
 module.exports = function (data) {
   return new Promise((resolve, reject) => {    
-
+    console.log('Updating tag...');
     const idx = data.data.tags.indexOf(data.tag);
     if(data.op === 'add')
       if(idx === -1)  data.data.tags.push(data.tag);
