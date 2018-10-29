@@ -4,13 +4,14 @@ module.exports = function (data) {
   return new Promise((resolve, reject) => {    
     console.log('Updating tag...');
     const idx = data.data.tags.indexOf(data.tag);
-    if(data.op === 'add')
-      if(idx === -1)  data.data.tags.push(data.tag);
-      else return reject(new Error(`The tag ${data.tag} already exists in reservation ${data.bookingNo}.`));
-    else if(data.op === 'remove')
+    if(data.op === 'add' && idx === -1)  data.data.tags.push(data.tag);
+    else if(data.op === 'remove') {
       if(idx !== -1)  data.data.tags.splice(idx, 1);
       else return reject(new Error(`The tag ${data.tag} does not exist in reservation ${data.bookingNo}.`));
+    }
     else return reject(new Error('Wrong op'));
+    
+    console.log('data from update', require('util').inspect(data, {showHidden: false, depth: null}));
 
     var options = {
       method: 'PUT',

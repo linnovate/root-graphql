@@ -23,8 +23,8 @@ module.exports = {
       name: 'sort',
       type: GraphQLString
     },
-    daysBefore: {
-        type: GraphQLInt
+    hotels: {
+      type: new GraphQLList(GraphQLString)
     }
   },
   resolve: (root, args, req) => {
@@ -35,9 +35,18 @@ module.exports = {
       request(`${utils.apiBaseUrl}/customData?uid=${args.uid}&type=reservation`, (error, response, body) => {
         console.log('ROOT RESPONSE ERROR:', error);
         if (error) return resolve([]);
-        let data = JSON.parse(body);
-        console.log(data);
-        data = data.filter(res => res.tags.includes('LAS'));
+
+        let data;
+
+        try {
+          data = JSON.parse(body);
+        }
+        catch(e) {}
+
+        if(data == null || !Array.isArray(data))
+          console.log('Invalid data returned: ', body);
+
+        data = data.filter(res => args.hotels.indexOf(res.custom.data.hotel_id) !== -1 && res.tags.includes('LAS'));
         console.log(data);
         return resolve(data);
       });

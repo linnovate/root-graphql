@@ -21,9 +21,9 @@ function condition(tag, op, state) {
     return true;
   if (tag === 'LAS')
     if (op === 'add')
-      return state === 'CheckIn';
+      return state === 'CHECKEDIN';
   if (op === 'remove')
-    return state === 'CheckOut'
+    return state === 'CHECKEDOUT'
   return false;
 }
 
