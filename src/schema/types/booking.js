@@ -19,6 +19,10 @@ const GuestType = new GraphQLObjectType({
     firstName: {
       type: GraphQLString,
       resolve: root => root.first_name && root.first_name[0]
+    },
+    title: {
+      type: GraphQLString,
+      resolve: root => root.title
     }
   })
 })
