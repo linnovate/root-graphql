@@ -46,6 +46,10 @@ module.exports = new GraphQLObjectType({
       type: GraphQLString,
       resolve: root => root.custom.data.state
     },
+    arrivalDate: {
+      type: GraphQLString,
+      resolve: root => root.custom.data.booking_from
+    },
     guest: {
       type: GuestType,
       resolve: root => root.custom.data.guests && root.custom.data.guests[0]
