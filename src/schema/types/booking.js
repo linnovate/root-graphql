@@ -19,9 +19,13 @@ const GuestType = new GraphQLObjectType({
     firstName: {
       type: GraphQLString,
       resolve: root => root.first_name && root.first_name[0]
+    },
+    gender: {
+      type: GraphQLString,
+      resolve: root => root.gender
     }
   })
-})
+});
 
 module.exports = new GraphQLObjectType({
   name: 'Booking',
@@ -38,6 +42,30 @@ module.exports = new GraphQLObjectType({
       type: GraphQLString,
       resolve: root => root.custom.data.room_type
     },
+    roomNumber: {
+      type: GraphQLString,
+      resolve: root => root.custom.data.room_no
+    },
+    adultCount : {
+      type: GraphQLString,
+      resolve: root => root.custom.data.adult_count
+    },
+    childCount : {
+      type: GraphQLString,
+      resolve: root => root.custom.data.child_count
+    },
+    infantCount : {
+      type: GraphQLString,
+      resolve: root => root.custom.data.infant_count
+    },
+    bookingFrom: {
+      type: GraphQLString,
+      resolve: root => root.custom.data.booking_from
+    },
+    bookingTo: {
+      type: GraphQLString,
+      resolve: root => root.custom.data.booking_to
+    },
     state: {
       type: GraphQLString,
       resolve: root => root.custom.data.state
@@ -45,6 +73,16 @@ module.exports = new GraphQLObjectType({
     guest: {
       type: GuestType,
       resolve: root => root.custom.data.guests && root.custom.data.guests[0]
+    },
+    guests: {
+      type: new GraphQLList(GuestType),
+      resolve: root => root.custom.data.guests
     }
+    // ,currentDate: {
+    //   type: GraphQLString,
+    //   resolve: () => new Date()
+    // }
   })
 });
+
+
