@@ -30,6 +30,10 @@ const GuestType = new GraphQLObjectType({
 module.exports = new GraphQLObjectType({
   name: 'Booking',
   fields: () => ({
+    bookID: {
+      type: GraphQLString,
+      resolve: root => root._id
+    },
     hotelID: {
       type: GraphQLID,
       resolve: root => root.custom.data.hotel_id
