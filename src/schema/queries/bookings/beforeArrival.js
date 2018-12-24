@@ -53,7 +53,8 @@ module.exports = {
           
         let date = new Date();
         date.setDate(date.getDate() + args.daysBefore);
-        data = data.filter((q) => args.hotels.indexOf(q.custom.data.hotel_id) !== -1 &&
+        data = data.filter((q) => (q.custom.data.state.toLowerCase() === 'pending'  || q.custom.data.state.toLowerCase() === 'reserved') &&
+          args.hotels.indexOf(q.custom.data.hotel_id) !== -1 &&
           date.toDateString() === new Date(q.custom.data.booking_from).toDateString());
         console.log('data after filtering: ', require('util').inspect(data, {showHidden: false, depth: null}));
         return resolve(data);
